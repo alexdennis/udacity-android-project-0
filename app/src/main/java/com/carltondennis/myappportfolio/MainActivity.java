@@ -11,31 +11,32 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
-    private Button spotifyStreamerButton;
-    private Button scoresAppButton;
-    private Button libraryAppButton;
-    private Button buildItBiggerButton;
-    private Button xyzReaderButton;
-    private Button capstoneButton;
+    private Button mSpotifyStreamerButton;
+    private Button mScoresAppButton;
+    private Button mLibraryAppButton;
+    private Button mBuildItBiggerButton;
+    private Button mXyzReaderButton;
+    private Button mCapstoneButton;
+    private Toast mAppToast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        spotifyStreamerButton = (Button) findViewById(R.id.spotify_streamer_button);
-        scoresAppButton = (Button) findViewById(R.id.scores_app_button);
-        libraryAppButton = (Button) findViewById(R.id.library_app_button);
-        buildItBiggerButton = (Button) findViewById(R.id.build_it_bigger_button);
-        xyzReaderButton = (Button) findViewById(R.id.xyz_reader_button);
-        capstoneButton = (Button) findViewById(R.id.capstone_button);
+        mSpotifyStreamerButton = (Button) findViewById(R.id.spotify_streamer_button);
+        mScoresAppButton = (Button) findViewById(R.id.scores_app_button);
+        mLibraryAppButton = (Button) findViewById(R.id.library_app_button);
+        mBuildItBiggerButton = (Button) findViewById(R.id.build_it_bigger_button);
+        mXyzReaderButton = (Button) findViewById(R.id.xyz_reader_button);
+        mCapstoneButton = (Button) findViewById(R.id.capstone_button);
 
-        setupButton(spotifyStreamerButton, R.string.spotify_streamer);
-        setupButton(scoresAppButton, R.string.scores_app);
-        setupButton(libraryAppButton, R.string.library_app);
-        setupButton(buildItBiggerButton, R.string.build_it_bigger);
-        setupButton(xyzReaderButton, R.string.xyz_reader);
-        setupButton(capstoneButton, R.string.capstone);
+        setupButton(mSpotifyStreamerButton, R.string.spotify_streamer);
+        setupButton(mScoresAppButton, R.string.scores_app);
+        setupButton(mLibraryAppButton, R.string.library_app);
+        setupButton(mBuildItBiggerButton, R.string.build_it_bigger);
+        setupButton(mXyzReaderButton, R.string.xyz_reader);
+        setupButton(mCapstoneButton, R.string.capstone);
     }
 
     private void setupButton(Button button, final int stringResource) {
@@ -43,7 +44,12 @@ public class MainActivity extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                (Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT)).show();
+                if (mAppToast != null) {
+                    mAppToast.cancel();
+                }
+
+                mAppToast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+                mAppToast.show();
             }
         });
     }
