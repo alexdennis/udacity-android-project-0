@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="project_button">#F08C35</color>
+    <color name="cap_project_button">#B71C1C</color>
+    <color name="cap_project_text">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>
